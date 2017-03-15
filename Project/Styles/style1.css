@@ -1,0 +1,106 @@
+htmp, body, p,form{
+	margin: 0;
+	padding: 0;
+}
+header{
+	background-color: #3b5998;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	height: 75px;
+}
+#form1{
+	display:inline-block;
+	position: absolute;
+	right: 20%;
+	top: 20px;
+	padding-right: 5px;
+}
+#form2{
+	position: absolute;
+	top: 120px;
+	right: 5%;
+	padding: 8px 10px;
+	width: 40%;
+	font-size:20px;
+}
+#Facebook_Posts{
+	color: #fff;
+	position: absolute;
+	font-family: Lucida Grande/Tahoma;
+	font-size: 35px;
+	top: 20px;
+	left: 18%;
+}
+#button1{
+	background-color: #0047b3;
+	color: #fff;
+	border: 1px;
+}
+#button1:hover{
+	background-color: #003d99;
+}
+#php{
+	position: absolute;
+	top: 50px;
+	right: 25%;
+	color:#ff0000;
+}
+img{
+	position: absolute;
+	top: 120px;
+	left: 20%;
+}
+section{
+	background-origin:padding-box;
+	background-repeat:repeat;
+	background-color:transparent;
+	background-image:linear-gradient(white, rgb(211, 216, 232));
+	position: absolute;
+	top: 75px;
+	width:100%;
+	height: 100%;
+}
+#btext{
+	color: #3b5998;
+	font-size: 30px;
+	position: absolute;
+	top: 510px;
+	left:20%;
+}
+#ntext{
+	font-size: 22px;
+	position: absolute;
+	top: 560px;
+	left:20%;
+}
+footer{
+	background-color:#fff;
+	position:absolute;
+	bottom:0%;
+	width:100%;
+	height:150px;
+}
+#h1{
+	position: absolute;
+	top: 25px;
+	right:36%;
+	font-size:40px;
+}
+#h2{
+	position: absolute;
+	top: 75px;
+	right:26.5%;
+	font-size:25px;
+}
+#btn1{
+	width:35%;
+	font-size:20px;
+}
+.form_text{
+	width:69%;
+}
+#text2{
+	color:#999;
+	font-size:13px;
+}
