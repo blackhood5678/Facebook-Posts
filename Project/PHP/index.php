@@ -44,18 +44,44 @@
 				<h2>Birthday</h2>
 				<p></p>
 				<select name="month">
-					<option value="0">month</option>
+					<option value="">month</option>
+					<option value="01">January</option>
+					<option value="02">February</option>
+					<option value="03">March</option>
+					<option value="04">April</option>
+					<option value="05">May</option>
+					<option value="06">June</option>
+					<option value="07">July</option>
+					<option value="08">August</option>
+					<option value="09">September</option>
+					<option value="10">October</option>
+					<option value="11">November</option>
+					<option value="12">December</option>
 				</select>
 				<select name="day">
-					<option value="0">day</option>
+					<option value="">day</option>
+					<?php
+						for($i=1;$i<32;$i++){
+							if($i<10){
+								echo '<option value="0'.$i.'">'.$i.'</option>';
+							}else{
+								echo '<option value="'.$i.'">'.$i.'</option>';
+							}
+						}
+					?>
 				</select>
 				<select name="year">
-					<option value="0">year</option>
+					<option value="">year</option>
+					<?php
+						for($i=1920;$i<2011;$i++){
+							echo '<option value="'.$i.'">'.$i.'</option>';
+						}
+					?>
 				</select>
 				<p></p>
 				<label for="male">Male</label>
 				<input id="male" type="radio" name="gender"/>
-				<label id="female1" for="female">Female</label>
+				<label for="female">Female</label>
 				<input id="female" type="radio" name="gender"/>
 				<p></p>
 				<div id="text2">
