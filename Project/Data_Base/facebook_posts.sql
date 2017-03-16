@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2017 at 06:36 PM
+-- Generation Time: Mar 16, 2017 at 06:56 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -33,6 +33,13 @@ CREATE TABLE `posts` (
   `upload_date` date NOT NULL,
   `date_deleted` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`post_id`, `first_name`, `post_cont`, `upload_date`, `date_deleted`) VALUES
+(1, 8, 'тест', '2017-03-16', NULL);
 
 -- --------------------------------------------------------
 
@@ -83,7 +90,7 @@ ALTER TABLE `registers`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `registers`
 --
