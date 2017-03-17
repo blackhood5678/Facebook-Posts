@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2017 at 06:56 PM
--- Server version: 10.1.19-MariaDB
+-- Generation Time: 
+-- Версия на сървъра: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Структура на таблица `comments`
+--
+
+CREATE TABLE `comments` (
+  `comments_id` int(11) NOT NULL,
+  `name` int(11) NOT NULL,
+  `comments` text NOT NULL,
+  `date_deleted` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура на таблица `posts`
 --
 
 CREATE TABLE `posts` (
@@ -35,7 +48,7 @@ CREATE TABLE `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `posts`
+-- Схема на данните от таблица `posts`
 --
 
 INSERT INTO `posts` (`post_id`, `first_name`, `post_cont`, `upload_date`, `date_deleted`) VALUES
@@ -44,7 +57,7 @@ INSERT INTO `posts` (`post_id`, `first_name`, `post_cont`, `upload_date`, `date_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `registers`
+-- Структура на таблица `registers`
 --
 
 CREATE TABLE `registers` (
@@ -57,7 +70,7 @@ CREATE TABLE `registers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `registers`
+-- Схема на данните от таблица `registers`
 --
 
 INSERT INTO `registers` (`id_register`, `first_name`, `last_name`, `email`, `password`, `date_deleted`) VALUES
@@ -68,6 +81,13 @@ INSERT INTO `registers` (`id_register`, `first_name`, `last_name`, `email`, `pas
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`comments_id`),
+  ADD KEY `name` (`name`);
 
 --
 -- Indexes for table `posts`
@@ -87,6 +107,11 @@ ALTER TABLE `registers`
 --
 
 --
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `comments_id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
@@ -97,11 +122,11 @@ ALTER TABLE `posts`
 ALTER TABLE `registers`
   MODIFY `id_register` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- Constraints for dumped tables
+-- Ограничения за дъмпнати таблици
 --
 
 --
--- Constraints for table `posts`
+-- Ограничения за таблица `posts`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`first_name`) REFERENCES `registers` (`id_register`);
