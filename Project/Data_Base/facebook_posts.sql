@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2017 at 06:56 PM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- Generation Time: 17 март 2017 в 11:37
+-- Версия на сървъра: 10.1.19-MariaDB
+-- PHP Version: 7.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,28 +23,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Структура на таблица `posts`
 --
 
 CREATE TABLE `posts` (
   `post_id` int(11) NOT NULL,
   `first_name` int(11) NOT NULL,
   `post_cont` varchar(250) NOT NULL,
+  `img_path` varchar(255) NOT NULL,
   `upload_date` date NOT NULL,
   `date_deleted` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `posts`
+-- Схема на данните от таблица `posts`
 --
 
-INSERT INTO `posts` (`post_id`, `first_name`, `post_cont`, `upload_date`, `date_deleted`) VALUES
-(1, 8, 'тест', '2017-03-16', NULL);
+INSERT INTO `posts` (`post_id`, `first_name`, `post_cont`, `img_path`, `upload_date`, `date_deleted`) VALUES
+(1, 8, 'content', '', '2017-03-16', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `registers`
+-- Структура на таблица `registers`
 --
 
 CREATE TABLE `registers` (
@@ -57,7 +58,7 @@ CREATE TABLE `registers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `registers`
+-- Схема на данните от таблица `registers`
 --
 
 INSERT INTO `registers` (`id_register`, `first_name`, `last_name`, `email`, `password`, `date_deleted`) VALUES
@@ -90,18 +91,18 @@ ALTER TABLE `registers`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `registers`
 --
 ALTER TABLE `registers`
   MODIFY `id_register` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- Constraints for dumped tables
+-- Ограничения за дъмпнати таблици
 --
 
 --
--- Constraints for table `posts`
+-- Ограничения за таблица `posts`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`first_name`) REFERENCES `registers` (`id_register`);

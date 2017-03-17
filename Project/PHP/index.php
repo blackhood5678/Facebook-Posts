@@ -92,7 +92,7 @@
 				<p></p>
 				<input class="btn btn-success"  id="btn1" type="submit" name="submit" value="Sign Up"/>
 			</form>
-		<img src="https://www.facebook.com/rsrc.php/v3/yV/r/zfYvmRWJSyz.png" alt="pic1"/>
+		<img src="../pic/pic_name.png" alt="pic1"/>
 		<div id="h1">Sign Up</div>
 		<div id="h2">It's free and always will be.<div>
 		</section>

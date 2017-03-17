@@ -1,0 +1,16 @@
+$read_query = "SELECT * FROM `posts` JOIN `registers` ON `posts`.`first_name` =  `registers`.`id_register`  WHERE `posts`.`date_deleted` IS NULL";
+				$result = mysqli_query($conn,$read_query);
+				
+				if(isset($row['img_path'])){
+					echo '<img scr="'.$row['img_path'].'" alt="post_img"/>'; 
+				} 
+				if (mysqli_num_rows($result) > 0){
+					echo '<p></p>';
+					while($row = mysqli_fetch_assoc($result)){
+						echo $row['first_name']; 
+						echo $row['post_cont'];
+						echo $row['upload_date'];
+						//echo '<td>'. '<a href="update_------------.php?--------_id='.$row['-------_id'].'">update</a>' .'</td>';
+						//echo '<td>'. '<a href="delete_------------.php?--------_id='.$row['-------_id'].'">delete</a>' .'</td>';// id-to na shushtata tablica						
+					}	
+				}
