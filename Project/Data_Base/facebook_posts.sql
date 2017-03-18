@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18 март 2017 в 17:24
+-- Generation Time: 18 март 2017 в 18:23
 -- Версия на сървъра: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -50,7 +50,7 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `uname`, `upload_date`, `date_deleted`) VALUES
-(15, 'yanyyanev', '2017-03-18', NULL);
+(27, 'yanyyanev', '2017-03-18', NULL);
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,7 @@ ALTER TABLE `img`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `registers`
 --
