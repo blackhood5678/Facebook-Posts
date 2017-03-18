@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 17 март 2017 в 11:37
+-- Generation Time: 18 март 2017 в 17:24
 -- Версия на сървъра: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -23,14 +23,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Структура на таблица `img`
+--
+
+CREATE TABLE `img` (
+  `id_img` int(11) NOT NULL,
+  `img_path` varchar(250) NOT NULL,
+  `date_deleted` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Структура на таблица `posts`
 --
 
 CREATE TABLE `posts` (
   `post_id` int(11) NOT NULL,
-  `first_name` int(11) NOT NULL,
-  `post_cont` varchar(250) NOT NULL,
-  `img_path` varchar(255) NOT NULL,
+  `uname` varchar(250) NOT NULL,
   `upload_date` date NOT NULL,
   `date_deleted` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -39,8 +49,8 @@ CREATE TABLE `posts` (
 -- Схема на данните от таблица `posts`
 --
 
-INSERT INTO `posts` (`post_id`, `first_name`, `post_cont`, `img_path`, `upload_date`, `date_deleted`) VALUES
-(1, 8, 'content', '', '2017-03-16', NULL);
+INSERT INTO `posts` (`post_id`, `uname`, `upload_date`, `date_deleted`) VALUES
+(15, 'yanyyanev', '2017-03-18', NULL);
 
 -- --------------------------------------------------------
 
@@ -50,10 +60,10 @@ INSERT INTO `posts` (`post_id`, `first_name`, `post_cont`, `img_path`, `upload_d
 
 CREATE TABLE `registers` (
   `id_register` int(11) NOT NULL,
-  `first_name` varchar(250) NOT NULL,
-  `last_name` varchar(250) NOT NULL,
+  `uname` varchar(250) NOT NULL,
   `email` varchar(250) NOT NULL,
   `password` int(11) NOT NULL,
+  `phone` int(11) NOT NULL,
   `date_deleted` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -61,21 +71,36 @@ CREATE TABLE `registers` (
 -- Схема на данните от таблица `registers`
 --
 
-INSERT INTO `registers` (`id_register`, `first_name`, `last_name`, `email`, `password`, `date_deleted`) VALUES
-(4, 'yany', 'yanev', 'yanyyanev@abv.bg', 123456789, NULL),
-(8, 'ivan', 'atanasov', 'ivanatanasov@abv.bg', 12345, NULL),
-(9, 'nikolai', 'krustev', 'krustev@abv.bg', 12345, NULL);
+INSERT INTO `registers` (`id_register`, `uname`, `email`, `password`, `phone`, `date_deleted`) VALUES
+(11, 'yanyyanev', 'yanyyanev@abv.bg', 123456789, 887009494, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура на таблица `text`
+--
+
+CREATE TABLE `text` (
+  `id_text` int(11) NOT NULL,
+  `post_cont` int(11) NOT NULL,
+  `date_deleted` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `img`
+--
+ALTER TABLE `img`
+  ADD PRIMARY KEY (`id_img`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
-  ADD PRIMARY KEY (`post_id`),
-  ADD KEY `first_name` (`first_name`);
+  ADD PRIMARY KEY (`post_id`);
 
 --
 -- Indexes for table `registers`
@@ -84,29 +109,35 @@ ALTER TABLE `registers`
   ADD PRIMARY KEY (`id_register`);
 
 --
+-- Indexes for table `text`
+--
+ALTER TABLE `text`
+  ADD PRIMARY KEY (`id_text`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `img`
+--
+ALTER TABLE `img`
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `registers`
 --
 ALTER TABLE `registers`
-  MODIFY `id_register` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_register` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
--- Ограничения за дъмпнати таблици
+-- AUTO_INCREMENT for table `text`
 --
-
---
--- Ограничения за таблица `posts`
---
-ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`first_name`) REFERENCES `registers` (`id_register`);
-
+ALTER TABLE `text`
+  MODIFY `id_text` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

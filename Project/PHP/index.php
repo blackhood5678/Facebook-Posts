@@ -14,7 +14,7 @@
 		<header>
 			<div id="Facebook_Posts">Facebook Posts</div>
 			<form id="form1" method="post" action="login.php">
-				<input type="email" name="email" placeholder="E-mail"/>
+				<input type="text" name="uname" placeholder="Username"/>
 				<input type="password" name="pass" placeholder="Password"/>
 				<input id="button1" type="submit" name="submit" value="Log In"/>
 			</form>
@@ -32,8 +32,7 @@
 			<div id="btext">Thanks for stopping by!</div>
 			<div id="ntext">We hope to see you again soon.</div>
 			<form id="form2" method="post" action="sign_up.php">
-				<input  type="text" name="fname" placeholder="First Name"/>
-				<input  type="text" name="lname" placeholder="Last Name"/>
+				<input class="form_text" type="text" name="uname" placeholder="Username"/>
 				<p></p>
 				<input class="form_text" type="email" name="email" placeholder="E-mail"/>
 				<p></p>
@@ -92,12 +91,12 @@
 				<p></p>
 				<input class="btn btn-success"  id="btn1" type="submit" name="submit" value="Sign Up"/>
 			</form>
-		<img src="../pic/pic_name.png" alt="pic1"/>
-		<div id="h1">Sign Up</div>
-		<div id="h2">It's free and always will be.<div>
+			<img src="../pic/pic_name.png" alt="pic1"/>
+			<div id="h1">Sign Up</div>
+			<div id="h2">It's free and always will be.<div>
 		</section>
 		<footer>
-		
+		<div></div>
 		</footer>
 	</body>
 </html>

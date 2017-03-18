@@ -1,18 +1,18 @@
 <?php
 	session_start();
 	include('connect.php');
-	if(($_POST['email']) && isset($_POST['pass'])){
-		if($_POST['email'] !="" && $_POST['pass'] !="") {
+	if(($_POST['uname']) && isset($_POST['pass'])){
+		if($_POST['uname'] !="" && $_POST['pass'] !="") {
 			
-			$email= $_POST['email'];
+			$uname= $_POST['uname'];
 			$pass= $_POST['pass'];;
-			
-			$query = "SELECT * FROM `registers` WHERE email='$email' AND password='$pass' ";
+			$_SESSION["uname"]= $uname;
+			$query = "SELECT * FROM `registers` WHERE uname='$uname' AND password='$pass' ";
 			
 			$sql= mysqli_query($conn, $query) or die (mysqli_error($conn));
 			
 			if(!$row = mysqli_fetch_assoc($sql)){
-				echo 'Your E-mail or password are incorrect!';
+				echo 'Your Username or password are incorrect!';
 			}else{
 				$_SESSION['id']= $row['id_register'];
 			}
