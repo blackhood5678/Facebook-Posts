@@ -95,8 +95,6 @@
 			<div id="h1">Sign Up</div>
 			<div id="h2">It's free and always will be.<div>
 		</section>
-		<footer>
-		<div></div>
-		</footer>
+		
 	</body>
 </html>

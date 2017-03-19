@@ -1,6 +1,39 @@
 <?php
 	session_start();
 	include('connect.php');
+	
+	$read_query = "SELECT * FROM `posts` WHERE date_deleted IS NULL";
+$result = mysqli_query($conn,$read_query);
+
+if (mysqli_num_rows($result) > 0)
+{	echo '<table border=1>';
+	while($row = mysqli_fetch_assoc($result))
+			{
+				echo '<tr>';
+				echo '<td>'. $row['uname'] .'</td>';
+				echo '<td>'. $row['text'] .'</td>';	
+				echo '<td> <img src="../pic/'.$row['img'].'" alt="pic1"/>'.'</td>';	
+				echo '<td>'. $row['upload_date'] .'</td>';
+				$postid = $row['post_id'];
+				echo '<td>'			
+				?>
+					<button name = "<?$postid?>" type="button">Like</button>
+				<?php		
+				'</td>';
+				$likes = 0;	
+				
+				
+				if(isset($_POST['button']) && $postid = $_POST['$postid'] )
+				{
+					$likes++ ;
+				}
+				echo '<td>'. $likes .'</td>';
+				echo '</tr>';			
+				
+			}
+		echo '</table>';
+		echo '<p>'.'</p>';
+}
 ?>
 <!DOCTYPE html>
 <html>
