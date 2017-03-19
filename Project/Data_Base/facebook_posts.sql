@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18 март 2017 в 18:23
+-- Generation Time: 19 март 2017 в 12:12
 -- Версия на сървъра: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -32,6 +32,13 @@ CREATE TABLE `img` (
   `date_deleted` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Схема на данните от таблица `img`
+--
+
+INSERT INTO `img` (`id_img`, `img_path`, `date_deleted`) VALUES
+(1, 'wasd', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -40,6 +47,8 @@ CREATE TABLE `img` (
 
 CREATE TABLE `posts` (
   `post_id` int(11) NOT NULL,
+  `img_id` int(11) NOT NULL,
+  `text_id` int(11) NOT NULL,
   `uname` varchar(250) NOT NULL,
   `upload_date` date NOT NULL,
   `date_deleted` date DEFAULT NULL
@@ -49,8 +58,8 @@ CREATE TABLE `posts` (
 -- Схема на данните от таблица `posts`
 --
 
-INSERT INTO `posts` (`post_id`, `uname`, `upload_date`, `date_deleted`) VALUES
-(27, 'yanyyanev', '2017-03-18', NULL);
+INSERT INTO `posts` (`post_id`, `img_id`, `text_id`, `uname`, `upload_date`, `date_deleted`) VALUES
+(29, 1, 1, 'dadwdwa', '2017-03-01', NULL);
 
 -- --------------------------------------------------------
 
@@ -72,7 +81,7 @@ CREATE TABLE `registers` (
 --
 
 INSERT INTO `registers` (`id_register`, `uname`, `email`, `password`, `phone`, `date_deleted`) VALUES
-(11, 'yanyyanev', 'yanyyanev@abv.bg', 123456789, 887009494, NULL);
+(12, 'yanyyanev@abv.bg', 'yanyyanev@abv.bg', 123456789, 88700128, NULL);
 
 -- --------------------------------------------------------
 
@@ -82,9 +91,16 @@ INSERT INTO `registers` (`id_register`, `uname`, `email`, `password`, `phone`, `
 
 CREATE TABLE `text` (
   `id_text` int(11) NOT NULL,
-  `post_cont` int(11) NOT NULL,
+  `post_cont` varchar(250) NOT NULL,
   `date_deleted` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Схема на данните от таблица `text`
+--
+
+INSERT INTO `text` (`id_text`, `post_cont`, `date_deleted`) VALUES
+(1, 'adasdasdad', NULL);
 
 --
 -- Indexes for dumped tables
@@ -100,7 +116,9 @@ ALTER TABLE `img`
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
-  ADD PRIMARY KEY (`post_id`);
+  ADD PRIMARY KEY (`post_id`),
+  ADD KEY `img_id` (`img_id`),
+  ADD KEY `text_id` (`text_id`);
 
 --
 -- Indexes for table `registers`
@@ -122,22 +140,33 @@ ALTER TABLE `text`
 -- AUTO_INCREMENT for table `img`
 --
 ALTER TABLE `img`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `registers`
 --
 ALTER TABLE `registers`
-  MODIFY `id_register` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_register` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `text`
 --
 ALTER TABLE `text`
-  MODIFY `id_text` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_text` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Ограничения за дъмпнати таблици
+--
+
+--
+-- Ограничения за таблица `posts`
+--
+ALTER TABLE `posts`
+  ADD CONSTRAINT `img_relation` FOREIGN KEY (`img_id`) REFERENCES `img` (`id_img`),
+  ADD CONSTRAINT `text_relation` FOREIGN KEY (`text_id`) REFERENCES `text` (`id_text`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

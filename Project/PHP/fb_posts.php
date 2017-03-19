@@ -10,7 +10,7 @@
 		<meta charset="UTF-8">
 	</head>
 	<body>
-		<form method="POST" action="" enctype="multipart/form-data">
+		<form method="post" action="" enctype="multipart/form-data">
 			<textarea name="text"></textarea>
 			<input type="file" name="img_name"/>
 			<p></p>
@@ -19,32 +19,32 @@
 		<a href="logout.php">Log Out</a>
 		<?php
 			if(isset($_POST['submit'])){
-				if($_POST['text'] ="" or $_FILES['img']['name'] =""){
-					echo 'You havent typed anything or you havent picked any photo';
-				}else{
-					$uname = $_SESSION["uname"];
-					$upload_date= date("Y,m,d");
-					$query = "INSERT INTO `posts` (`uname`,`upload_date`) VALUE ('$uname','$upload_date')";
-					mysqli_query($conn,$query) or die (mysqli_error($conn));
-					
-					if($_POST['text'] !="" && $_FILES['img']['name'] !=""){
+				$uname = $_SESSION["uname"];
+				$upload_date= date("Y,m,d");
+				$text = $_POST['text'];
+				$target = "../pic/" . basename( $_FILES['img_name']['name']);
+				$img =($_FILES['img_name']['name']);
+				
+					if($text !="" && $img !=""){
 						
-						$_SESSION["insert_text"]= $_POST['text'];
-						$_SESSION["insert_img"]= $_FILES['img']['tmp_name'];
-						header("Location: insert_text.php");
-						header("Location: insert_img.php");
+						$query = "INSERT INTO `posts` (`uname`,`upload_date`) VALUE ('$uname','$upload_date'); ";
+						$query .= "INSERT INTO `img` (`img_path`) VALUE ('$img'); ";
+						$query .= "INSERT INTO `text` (`post_cont`) VALUE ('$text'); ";
+						mysqli_multi_query($conn,$query) or die (mysqli_error($conn));
 						
-					}elseif($_POST['text'] !=""){
+					}elseif($text !=""){
 						
-						$_SESSION["insert_text"]= $_POST['text'];
-						header("Location: insert_text.php");
+						$query = "INSERT INTO `posts` (`uname`,`upload_date`) VALUE ('$uname','$upload_date'); ";
+						$query .= "INSERT INTO `text` (`post_cont`) VALUE ('$text'); ";
+						mysqli_multi_query($conn,$query) or die (mysqli_error($conn));
 						
-					}elseif($_FILES['img']['name'] !=""){
+					}elseif($img !=""){
 						
-						$_SESSION["insert_img"]= $_FILES['img']['tmp_name'];
-						header("Location: insert_img.php");
+						$query = "INSERT INTO `posts` (`uname`,`upload_date`) VALUE ('$uname','$upload_date'); ";
+						$query .= "INSERT INTO `img` (`img_path`) VALUE ('$img')";";
+						mysqli_multi_query($conn,$query) or die (mysqli_error($conn));
+						
 					} 	
-				}
 			}
 		?>
 	</body>
