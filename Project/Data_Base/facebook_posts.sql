@@ -30,6 +30,7 @@ CREATE TABLE `comments` (
   `comments_id` int(11) NOT NULL,
   `name` int(11) NOT NULL,
   `comments` text NOT NULL,
+  `date` date NOT NULL,
   `date_deleted` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
