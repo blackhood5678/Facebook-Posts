@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 19 март 2017 в 15:48
+-- Generation Time: 
 -- Версия на сървъра: 10.1.19-MariaDB
--- PHP Version: 7.0.13
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `facebook_posts`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура на таблица `comments`
+--
+
+CREATE TABLE `comments` (
+  `comments_id` int(11) NOT NULL,
+  `name` int(11) NOT NULL,
+  `comments` text NOT NULL,
+  `date_deleted` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -77,6 +90,13 @@ INSERT INTO `registers` (`id_register`, `uname`, `email`, `password`, `phone`, `
 --
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`comments_id`),
+  ADD KEY `name` (`name`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
@@ -92,6 +112,11 @@ ALTER TABLE `registers`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `comments_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `posts`
 --
